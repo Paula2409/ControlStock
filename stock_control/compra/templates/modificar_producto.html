@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Modificar producto{% endblock %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-12 col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center fs-4 fw-bold">Modificar producto</h3>
+                <hr>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form | crispy}}
+                    <input type="submit" value="Guardar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>    
+{% endblock %}

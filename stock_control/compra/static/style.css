@@ -1,0 +1,17 @@
+.asteriskField {
+    display: none;
+
+}
+.navbar-expand-lg {
+    background-color: #497ef9;
+}
+.nav-item {
+    font-size: 14px;
+}
+
+.body-base {
+    font-family: 'Open Sans', sans-serif;
+}
+#btn {
+    font-size: 12px;
+}

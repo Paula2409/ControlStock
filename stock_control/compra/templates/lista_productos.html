@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de productos{% endblock%}
+{% block content %}
+<h2 class="text-center mt-4 fw-bold">Productos</h2>
+    {% if message %}
+        <span style="color:firebrick">{{ message }}</span>
+    {% endif %}
+    {% if productos %}
+        <div class="col-6 col-md-6 offset-md-3">
+            <table class="table table-hover">
+            <tr class="table-primary border-dark fw-bolder">
+                <th>Id</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Proveedor</th>
+                <th colspan="2" style="text-align: center;">Acciones</th>
+
+            </tr>
+            {% for producto in productos %}
+            <tr>
+                    <td>{{producto.id}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.stock_actual}}</td>
+                    <td>{{producto.proveedor}}</td>
+                    <td><button class="btn btn-warning" id="btn" name="modificar_producto"><a class="text-decoration-none text-black" href="{% url 'modificar_producto' producto.id %}">Modificar</a></button></td>
+                    <td><button class="btn btn-danger" id="btn" name="eliminar_producto"><a class="text-decoration-none text-black" href="{% url 'eliminar_producto' producto.id %}">Eliminar</a></button></td>
+            </tr>            
+                    {% endfor %}
+            </table>
+        </div>
+    {% else %}
+        <h6 style="color:red; text-align: center;">No hay productos para mostrar</h6>
+    {% endif %}
+{% endblock content %}
+

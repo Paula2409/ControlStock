@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Lista de proveedores{% endblock title %}
+{% block content %}
+<h2 class="text-center mt-4 fw-bold">Proveedores</h2>
+    {% if proveedores %}
+        <div class="col-6 col-md-6 offset-md-3">
+            <table class="table table-hover">
+                <tr class="table-primary border-dark fw-bolder">
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th colspan="2" style="text-align: center;">Acciones</th>
+                </tr>
+                {% for proveedor in proveedores %}
+                    <tr>
+                        <td>{{proveedor.id}}</td>
+                        <td>{{proveedor.nombre}}</td>
+                        <td>{{proveedor.apellido}}</td>
+                        <td>{{proveedor.dni}}</td>
+                        <td><button class="btn btn-warning" id="btn" name="modificar_proveedor"><a class="text-decoration-none text-black" href="{% url 'modificar_proveedor' proveedor.id %}">Modificar</a></button></td>
+                        <td><button class="btn btn-danger" id="btn" name="eliminar_proveedor"><a class="text-decoration-none text-black" href="{% url 'eliminar_proveedor' proveedor.id %}">Eliminar</a></button></td>
+        
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% else %}
+        <h6 style="color:red; text-align: center">No hay proveedores para mostrar</h6>
+    {% endif %}
+{% endblock content %}
