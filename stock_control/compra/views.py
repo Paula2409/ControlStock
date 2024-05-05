@@ -40,7 +40,7 @@ class ListaProveedores(generic.ListView):
     template_name = 'lista_proveedor.html'
     context_object_name = 'proveedores'
 
-class NuevoProveedor(generic.FormView):
+class NuevoProveedor(generic.CreateView):
     model = Proveedor
     template_name = 'nuevo_proveedor.html'
     form_class = RegistrarProveedor
@@ -73,7 +73,8 @@ class EliminarProveedor(generic.DeleteView):
         else:
             form = RegistrarProducto(request.POST)
         return render(request,'nuevo_producto.html',{'form': form})
-        def update(self, request, pk):
+        
+    def update(self, request, pk):
         producto = get_object_or_404(Producto, id=pk)
         data={
             'form': RegistrarProducto(producto)
